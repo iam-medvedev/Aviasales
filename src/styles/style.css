@@ -1,0 +1,249 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=cyrillic");
+* {
+  box-sizing: border-box; }
+
+body {
+  background: #F3F7FA;
+  padding: 0;
+  margin: 0;
+  padding-top: 41px;
+  font-family: 'Open Sans', sans-serif; }
+
+.home {
+  display: block;
+  max-width: 818px;
+  margin: 0 auto; }
+  .home__logo {
+    text-align: center;
+    margin-bottom: 27px; }
+  .home__wrap {
+    display: flex;
+    justify-content: space-between; }
+
+.sidebar {
+  width: 41%;
+  height: 100%;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px 0 rgba(91, 137, 164, 0.25);
+  padding: 16px 0; }
+
+.filter-block {
+  margin-bottom: 31px; }
+  .filter-block:last-child {
+    margin-bottom: 0; }
+  .filter-block__legend {
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #4A4A4A;
+    font-weight: 600;
+    margin-bottom: 12px;
+    padding: 0 16px;
+    letter-spacing: .5px; }
+
+.currencies {
+  display: flex;
+  padding: 0 16px; }
+  .currencies__button {
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+    user-select: none; }
+    .currencies__button:first-child span {
+      border-radius: 5px 0 0 5px; }
+    .currencies__button:last-child span {
+      border-radius: 0 5px 5px 0; }
+    .currencies__button:not(:last-child) span {
+      border-right: none; }
+    .currencies__button:hover span {
+      background: #F2FCFF;
+      border-color: #2196F3; }
+    .currencies__button:hover + label span {
+      border-left-color: #2196F3; }
+    .currencies__button span {
+      height: 40px;
+      line-height: 40px;
+      display: block;
+      text-align: center;
+      font-size: 12px;
+      color: #2196F3;
+      border: 1px solid #D2D5D6;
+      transition: .1s linear; }
+    .currencies__button input {
+      position: absolute;
+      left: -9999px;
+      opacity: 0; }
+      .currencies__button input:checked + span {
+        color: #fff;
+        background: #2196F3;
+        border-color: #2196F3; }
+
+.stops__button {
+  display: block;
+  position: relative;
+  padding: 6px 16px;
+  cursor: pointer;
+  background: transparent;
+  transition: .1s linear;
+  user-select: none; }
+  .stops__button:hover {
+    background: #F2FCFF; }
+  .stops__button:hover .stops__button-only {
+    opacity: 1 !important; }
+  .stops__button input {
+    position: absolute;
+    left: -9999px;
+    opacity: 0; }
+  input:checked + .stops__button-checkbox {
+    border-color: #2196F3; }
+    input:checked + .stops__button-checkbox:after {
+      opacity: 1; }
+  .stops__button-checkbox {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 19px;
+    height: 19px;
+    margin-right: 11px;
+    border: 1px solid #D2D5D6;
+    border-radius: 3px;
+    transition: .1s linear; }
+    .stops__button-checkbox:after {
+      content: '';
+      background: url("../assets/tick.svg");
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0;
+      transition: .1s linear; }
+  .stops__button-name {
+    font-size: 12px;
+    color: #4A4A4A; }
+  .stops__button-only {
+    outline: none;
+    position: absolute;
+    right: 9px;
+    margin-top: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    color: #2196F3;
+    border: none;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: .5px;
+    cursor: pointer;
+    font-weight: 600;
+    opacity: 0;
+    transition: .1s linear; }
+
+.tickets {
+  width: 100%;
+  margin-left: 20px; }
+  .tickets .ticket {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 4px 0 rgba(91, 137, 164, 0.25);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    transition: .1s linear; }
+    .tickets .ticket:hover {
+      box-shadow: 0 5px 25px 0 rgba(91, 137, 164, 0.1); }
+    .tickets .ticket:last-child {
+      margin-bottom: 0; }
+    .tickets .ticket .ticket-left {
+      width: 53%;
+      border-right: 1px solid #ECEFF1;
+      padding: 20px 20px; }
+      .tickets .ticket .ticket-left__logo {
+        text-align: center;
+        margin-bottom: 15px;
+        margin-top: 5px; }
+        .tickets .ticket .ticket-left__logo img {
+          max-width: 120px;
+          height: auto; }
+      .tickets .ticket .ticket-left__action button {
+        height: 57px;
+        outline: none;
+        background: #FF6D00;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        transition: .1s linear;
+        font-family: 'Open Sans', sans-serif;
+        cursor: pointer; }
+        .tickets .ticket .ticket-left__action button:hover {
+          background: #FF8124; }
+    .tickets .ticket .ticket-right {
+      width: 100%;
+      padding: 20px 20px 20px 25px; }
+    .tickets .ticket .flight-time {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px; }
+      .tickets .ticket .flight-time__from {
+        color: #4A4A4A;
+        font-size: 32px;
+        line-height: 1;
+        width: 100%; }
+      .tickets .ticket .flight-time__path {
+        line-height: 1;
+        width: 100%;
+        text-align: center;
+        position: relative; }
+        .tickets .ticket .flight-time__path-count {
+          font-size: 10px;
+          color: #8B9497;
+          text-transform: uppercase; }
+        .tickets .ticket .flight-time__path:before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          margin-top: 6px;
+          left: 0;
+          width: calc(100% - 15px);
+          height: 1px;
+          background: #D2D5D6; }
+        .tickets .ticket .flight-time__path:after {
+          content: '';
+          position: absolute;
+          right: 0;
+          top: 50%;
+          z-index: 5;
+          background: url("../assets/airplane.svg");
+          width: 13px;
+          height: 13px;
+          background-size: cover;
+          background-position: center; }
+      .tickets .ticket .flight-time__to {
+        color: #4A4A4A;
+        font-size: 32px;
+        line-height: 1;
+        text-align: right;
+        width: 100%; }
+    .tickets .ticket .flight-data {
+      display: flex;
+      justify-content: space-between; }
+      .tickets .ticket .flight-data__city {
+        width: 50%;
+        display: inline-block; }
+        .tickets .ticket .flight-data__city:last-child {
+          text-align: right; }
+        .tickets .ticket .flight-data__city-name {
+          display: block;
+          font-size: 12px;
+          font-weight: 600;
+          color: #4A4A4A; }
+        .tickets .ticket .flight-data__city-date {
+          display: block;
+          color: #8B9497;
+          font-size: 12px; }

@@ -8,6 +8,8 @@ import reducers from './reducers';
 import App from './containers/App';
 import { loadCurrencyRates } from './actions/';
 
+import './styles/style.css';
+
 const store = createStore(reducers, applyMiddleware(thunk));
 store.dispatch(loadCurrencyRates());
 

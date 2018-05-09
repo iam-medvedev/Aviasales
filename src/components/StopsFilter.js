@@ -12,11 +12,11 @@ class StopsFilter extends Component {
 				<div className="stops">
 					{this.props.stops.map((item, i) => {
 						return (
-							<label key={`stops-${i}`} className="stops__button" style={{display: 'block'}}>
+							<label key={`stops-${i}`} className="stops__button">
 								<input type="checkbox" checked={item.checked} onChange={() => this.props.stopSelected(item.value)} />
-								<div className="checkbox"></div>
-								<span>{item.name}</span>
-								{item.value > -1 ? (<button className="stops__only" onClick={() => this.props.stopSelectedOnly(item.value)}>Только</button>) : ''}
+								<div className="stops__button-checkbox"></div>
+								<span className="stops__button-name">{item.name}</span>
+								{item.value > -1 ? (<button className="stops__button-only" onClick={() => this.props.stopSelectedOnly(item.value)}>Только</button>) : ''}
 							</label>
 						);
 					})}

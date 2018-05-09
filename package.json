@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "moment": "^2.22.1",
+    "node-sass": "^4.9.0",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
@@ -13,8 +14,8 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "node-sass src/styles/style.scss src/styles/style.css -w | react-scripts start",
+    "build": "node-sass src/styles/style.scss src/styles/style.css |react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
