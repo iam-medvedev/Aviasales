@@ -9,7 +9,11 @@ class Tickets extends Component {
 
 		return (
 			<div className="tickets">
-				{this.props.tickets.map((item, i) => <Ticket currency={currency} key={`ticket-${i}`} data={item} />)}
+				{
+					this.props.tickets && this.props.tickets.length
+					? this.props.tickets.map((item, i) => <Ticket currency={currency} key={`ticket-${i}`} data={item} />)
+					: <strong className="tickets__not-found">Ничего не найдено...</strong>
+				}
 			</div>
 		);
 	}
