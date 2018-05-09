@@ -53,7 +53,7 @@ export const stopSelectedOnly = (value) => {
  */
 export const loadCurrencyRates = () => {
 	return (dispatch, getState) => {
-		fetch('http://www.floatrates.com/daily/rub.json')
+		fetch('https://www.floatrates.com/daily/rub.json')
 		.then(response => response.json())
 		.then(rates => {
 			const state = getState();
