@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import Tickets from './Tickets';
+import Sidebar from './Sidebar';
 
 class App extends Component {
 	render() {
 		return (
 			<div className="container">
-				<Tickets tickets={this.props.tickets} />
+				<Sidebar />
+				<Tickets />
 			</div>
 		)
 	}
 }
 
-function mapStateToProps(state) {
-	return {
-		tickets: state.tickets
-	}
-}
-
-export default connect(mapStateToProps)(App);
+export default App;
