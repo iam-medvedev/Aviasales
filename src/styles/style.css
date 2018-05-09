@@ -146,104 +146,144 @@ body {
 .tickets {
   width: 100%;
   margin-left: 20px; }
-  .tickets .ticket {
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 1px 4px 0 rgba(91, 137, 164, 0.25);
-    margin-bottom: 20px;
+
+.ticket {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px 0 rgba(91, 137, 164, 0.25);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  transition: .1s linear; }
+  .ticket:hover {
+    box-shadow: 0 5px 25px 0 rgba(91, 137, 164, 0.1); }
+  .ticket:last-child {
+    margin-bottom: 0; }
+  .ticket-left {
+    width: 53%;
+    border-right: 1px solid #ECEFF1;
+    padding: 20px 20px; }
+    .ticket-left__logo {
+      text-align: center;
+      margin-bottom: 15px;
+      margin-top: 5px; }
+      .ticket-left__logo img {
+        max-width: 120px;
+        width: 100%;
+        height: auto; }
+    .ticket-left__action button {
+      height: 57px;
+      outline: none;
+      background: #FF6D00;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 5px;
+      border: none;
+      color: #fff;
+      transition: .1s linear;
+      font-family: 'Open Sans', sans-serif;
+      cursor: pointer; }
+      .ticket-left__action button:hover {
+        background: #FF8124; }
+  .ticket-right {
+    width: 100%;
+    padding: 20px 20px 20px 25px; }
+  .ticket .flight-time {
     display: flex;
     justify-content: space-between;
-    transition: .1s linear; }
-    .tickets .ticket:hover {
-      box-shadow: 0 5px 25px 0 rgba(91, 137, 164, 0.1); }
-    .tickets .ticket:last-child {
-      margin-bottom: 0; }
-    .tickets .ticket .ticket-left {
-      width: 53%;
-      border-right: 1px solid #ECEFF1;
-      padding: 20px 20px; }
-      .tickets .ticket .ticket-left__logo {
-        text-align: center;
-        margin-bottom: 15px;
-        margin-top: 5px; }
-        .tickets .ticket .ticket-left__logo img {
-          max-width: 120px;
-          height: auto; }
-      .tickets .ticket .ticket-left__action button {
-        height: 57px;
-        outline: none;
-        background: #FF6D00;
-        font-size: 16px;
-        font-weight: 600;
-        border-radius: 5px;
-        border: none;
-        color: #fff;
-        transition: .1s linear;
-        font-family: 'Open Sans', sans-serif;
-        cursor: pointer; }
-        .tickets .ticket .ticket-left__action button:hover {
-          background: #FF8124; }
-    .tickets .ticket .ticket-right {
+    margin-bottom: 8px; }
+    .ticket .flight-time__from {
+      color: #4A4A4A;
+      font-size: 32px;
+      line-height: 1;
+      width: 100%; }
+    .ticket .flight-time__path {
+      line-height: 1;
       width: 100%;
-      padding: 20px 20px 20px 25px; }
-    .tickets .ticket .flight-time {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px; }
-      .tickets .ticket .flight-time__from {
-        color: #4A4A4A;
-        font-size: 32px;
-        line-height: 1;
-        width: 100%; }
-      .tickets .ticket .flight-time__path {
-        line-height: 1;
-        width: 100%;
-        text-align: center;
-        position: relative; }
-        .tickets .ticket .flight-time__path-count {
-          font-size: 10px;
-          color: #8B9497;
-          text-transform: uppercase; }
-        .tickets .ticket .flight-time__path:before {
-          content: '';
-          position: absolute;
-          top: 50%;
-          margin-top: 6px;
-          left: 0;
-          width: calc(100% - 15px);
-          height: 1px;
-          background: #D2D5D6; }
-        .tickets .ticket .flight-time__path:after {
-          content: '';
-          position: absolute;
-          right: 0;
-          top: 50%;
-          z-index: 5;
-          background: url("../assets/airplane.svg");
-          width: 13px;
-          height: 13px;
-          background-size: cover;
-          background-position: center; }
-      .tickets .ticket .flight-time__to {
-        color: #4A4A4A;
-        font-size: 32px;
-        line-height: 1;
-        text-align: right;
-        width: 100%; }
-    .tickets .ticket .flight-data {
-      display: flex;
-      justify-content: space-between; }
-      .tickets .ticket .flight-data__city {
+      text-align: center;
+      position: relative; }
+      .ticket .flight-time__path-count {
+        font-size: 10px;
+        color: #8B9497;
+        text-transform: uppercase; }
+      .ticket .flight-time__path:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        margin-top: 6px;
+        left: 0;
+        width: calc(100% - 15px);
+        height: 1px;
+        background: #D2D5D6; }
+      .ticket .flight-time__path:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        z-index: 5;
+        background: url("../assets/airplane.svg");
+        width: 13px;
+        height: 13px;
+        background-size: cover;
+        background-position: center; }
+    .ticket .flight-time__to {
+      color: #4A4A4A;
+      font-size: 32px;
+      line-height: 1;
+      text-align: right;
+      width: 100%; }
+  .ticket .flight-data {
+    display: flex;
+    justify-content: space-between; }
+    .ticket .flight-data__city {
+      width: 50%;
+      display: inline-block; }
+      .ticket .flight-data__city:last-child {
+        text-align: right; }
+      .ticket .flight-data__city-name {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        color: #4A4A4A; }
+      .ticket .flight-data__city-date {
+        display: block;
+        color: #8B9497;
+        font-size: 12px; }
+
+@media screen and (max-width: 750px) {
+  .home__wrap {
+    display: block;
+    padding: 0 20px; }
+  .sidebar {
+    width: 100%;
+    margin-bottom: 20px; }
+  .tickets {
+    margin-left: 0; } }
+
+@media screen and (max-width: 550px) {
+  .ticket {
+    flex-wrap: wrap-reverse; }
+    .ticket-left {
+      width: 100%;
+      border-right: none;
+      padding-top: 0; }
+      .ticket-left__logo {
+        display: inline-block;
         width: 50%;
-        display: inline-block; }
-        .tickets .ticket .flight-data__city:last-child {
-          text-align: right; }
-        .tickets .ticket .flight-data__city-name {
-          display: block;
-          font-size: 12px;
-          font-weight: 600;
-          color: #4A4A4A; }
-        .tickets .ticket .flight-data__city-date {
-          display: block;
-          color: #8B9497;
-          font-size: 12px; }
+        text-align: left;
+        vertical-align: middle;
+        margin: 0;
+        padding-right: 10px; }
+      .ticket-left__action {
+        display: inline-block;
+        width: 50%;
+        text-align: right;
+        vertical-align: middle; }
+        .ticket-left__action button {
+          height: 47px;
+          font-size: 13px;
+          margin-left: 10px; }
+    .ticket-right {
+      padding: 20px 20px; }
+    .ticket .flight-time__from, .ticket .flight-time__to {
+      font-size: 27px; } }
