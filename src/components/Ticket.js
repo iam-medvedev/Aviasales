@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Ticket extends Component {
-	constructor() {
+	constructor(props) {
 		super();
 
 		// https://caniuse.com/#search=intl (ie 11, edge - поддерживают)
@@ -14,7 +14,6 @@ class Ticket extends Component {
 			month: 'short',
 			day: 'numeric'
 		});
-		this._numberFormat = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB' });
 
 		this._stopsCount = this._stopsCount.bind(this);
 		this._formatDate = this._formatDate.bind(this);
@@ -61,7 +60,8 @@ class Ticket extends Component {
 	 * @return string - отформатированная цена
 	 */
 	_formatPrice(price) {
-		return this._numberFormat.format(price);
+		const f = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: this.props.currency.name });
+		return f.format(price * (this.props.currency.rate || 1));
 	}
 
 	/**
@@ -118,7 +118,8 @@ class Ticket extends Component {
 }
 
 Ticket.propTypes = {
-	data: PropTypes.object.isRequired
+	data: PropTypes.object.isRequired,
+	currency: PropTypes.object.isRequired
 }
 
 export default Ticket;

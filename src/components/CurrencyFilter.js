@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { currencySelected } from '../actions/';
 
 class CurrencyFilter extends Component {
 	render() {
@@ -8,10 +10,10 @@ class CurrencyFilter extends Component {
 			<div className="filter-block">
 				<div className="filter-block__legend">Валюта</div>
 				<div className="currencies">
-					{this.props.currencies.list.map((item, i) => {
+					{this.props.currencies.map((item, i) => {
 						return (
 							<label key={`currencies-${i}`} className="currencies__button">
-								<input type="checkbox" checked={item.checked} onChange={() => console.log} />
+								<input type="checkbox" checked={item.checked} onChange={() => this.props.currencySelected(i)} />
 								<span>{item.name}</span>
 							</label>
 						);
@@ -23,7 +25,8 @@ class CurrencyFilter extends Component {
 }
 
 CurrencyFilter.propTypes = {
-	currencies: PropTypes.object.isRequired
+	currencies: PropTypes.array.isRequired,
+	currencySelected: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -32,4 +35,10 @@ function mapStateToProps(state) {
 	}
 }
 
-export default connect(mapStateToProps)(CurrencyFilter);
+function mapDispatchToProps(dispatch) {
+	return {
+		currencySelected: bindActionCreators(currencySelected, dispatch)
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CurrencyFilter);

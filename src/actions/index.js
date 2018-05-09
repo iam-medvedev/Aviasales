@@ -49,14 +49,47 @@ export const stopSelectedOnly = (value) => {
 }
 
 /**
+ * Загрузка курсов валют
+ */
+export const loadCurrencyRates = () => {
+	return (dispatch, getState) => {
+		fetch('http://www.floatrates.com/daily/rub.json')
+		.then(response => response.json())
+		.then(rates => {
+			const state = getState();
+			let currencies = state.currencies;
+
+			currencies.forEach(item => {
+				let code = item.name.toLowerCase();
+				item.rate = rates[code] ? rates[code].rate : 1;
+			});
+
+			dispatch({
+				type: 'CURRENCY_RATES_LOADED',
+				payload: {
+					currencies
+				}
+			});
+		})
+	}
+}
+
+/**
  * Выбор валюты
  */
 export const currencySelected = (value) => {
 	return (dispatch, getState) => {
+		const state = getState();
+		let currencies = state.currencies;
+
+		currencies.forEach((item, i) => {
+			item.checked = (i === value) ? true : false;
+		});
+
 		dispatch({
 			type: 'CURRENCY_SELECTED',
 			payload: {
-				value
+				currencies
 			}
 		});
 	}
