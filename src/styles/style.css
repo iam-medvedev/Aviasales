@@ -160,8 +160,6 @@ body {
   transition: .1s linear; }
   .ticket:hover {
     box-shadow: 0 5px 25px 0 rgba(91, 137, 164, 0.1); }
-  .ticket:last-child {
-    margin-bottom: 0; }
   .ticket-left {
     width: 53%;
     border-right: 1px solid #ECEFF1;

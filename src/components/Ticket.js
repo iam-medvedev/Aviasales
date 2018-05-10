@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { pluralize } from '../utils';
+import moment from 'moment';
+import 'moment/locale/ru';
 
 class Ticket extends Component {
 	constructor(props) {
 		super();
-
-		// https://caniuse.com/#search=intl (ie 11, edge - поддерживают)
-		this._pluralRules = new Intl.PluralRules();
-		this._langDefinition = {one: 'пересадка', few: 'пересадки', many: 'пересадок'};
-		this._dateFormatter = new Intl.DateTimeFormat("ru", {
-			weekday: 'narrow',
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric'
-		});
 
 		this._stopsCount = this._stopsCount.bind(this);
 		this._formatDate = this._formatDate.bind(this);
@@ -28,29 +21,17 @@ class Ticket extends Component {
 	 * @return string - 1 пересадка, 2 пересадки, 5 пересадок и т.д.
 	 */
 	_stopsCount(count) {
-		return `${count} ${this._langDefinition[this._pluralRules.select(count)]}`;
+		return `${count} ${pluralize(count, ['пересадка', 'пересадки', 'пересадок'])}`;
 	}
 
 	/**
 	 * Формат даты
-	 * можно заюзать и moment и т.д., но intl тут вполне подходит
 	 *
 	 * @param string str - дата в формате DD.MM.YY
 	 * @return string - отформатированная дата
 	 */
 	_formatDate(str) {
-		const dateParts = str.split('.');
-		let result = '';
-
-		if (dateParts && dateParts.length) {
-			const dateObject = new Date(`20${dateParts[2]}`, dateParts[1] - 1, dateParts[0]);
-			let formattedDate = {};
-			this._dateFormatter.formatToParts(dateObject).forEach(el => formattedDate[el.type] = el.value);
-
-			result = `${formattedDate.day} ${formattedDate.month} ${formattedDate.year}, ${formattedDate.weekday}`;
-		}
-
-		return result;
+		return moment(str, 'DD.MM.YY').format('DD MMMM YYYY, dd');
 	}
 
 	/**
