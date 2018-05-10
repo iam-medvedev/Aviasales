@@ -70,7 +70,7 @@ export const loadCurrencyRates = () => {
 					currencies
 				}
 			});
-		})
+		});
 	}
 }
 
@@ -91,6 +91,18 @@ export const currencySelected = (value) => {
 			payload: {
 				currencies
 			}
+		});
+	}
+}
+
+/**
+ * Загрузка билетов
+ */
+export const loadTickets = (payload) => {
+	return (dispatch, getState) => {
+		dispatch({
+			type: 'TICKETS_LOADED',
+			payload
 		});
 	}
 }
