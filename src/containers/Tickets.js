@@ -21,7 +21,7 @@ class Tickets extends Component {
 	 * Загрузка билетов
 	 */
 	_loadTickets() {
-		fetch('/tickets.json')
+		fetch('./tickets.json')
 		.then(response => response.json())
 		.then(data => {
 			this.props.loadTickets(data);

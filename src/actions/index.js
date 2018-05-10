@@ -15,6 +15,7 @@ export const stopSelected = (value) => {
 
 			if (index > -1) {
 				stops[index].checked = !stops[index].checked;
+				stops[0].checked = false;
 			}
 		}
 
