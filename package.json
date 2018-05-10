@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://iam-medvedev.github.io/aviasales-test",
   "dependencies": {
+    "core-js": "^2.5.6",
     "moment": "^2.22.1",
     "node-sass": "^4.9.0",
     "prop-types": "^15.6.1",

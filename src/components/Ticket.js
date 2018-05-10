@@ -38,11 +38,12 @@ class Ticket extends Component {
 	 * Формат цены
 	 *
 	 * @param int price - цена
+	 * @param int currency - валюта
 	 * @return string - отформатированная цена
 	 */
-	_formatPrice(price) {
-		const f = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: this.props.currency.name });
-		return f.format(price * (this.props.currency.rate || 1));
+	_formatPrice(price, currency) {
+		const f = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: currency.name });
+		return f.format(price * (currency.rate || 1));
 	}
 
 	/**
@@ -56,7 +57,11 @@ class Ticket extends Component {
 	}
 
 	render() {
-		const { data } = this.props;
+		const { data, currency } = this.props;
+		const _currency = currency || {
+			name: 'RUB',
+			rate: 1
+		};
 
 		return (
 			<div className="ticket">
@@ -66,7 +71,7 @@ class Ticket extends Component {
 					</div>
 					<div className="ticket-left__action">
 						<button>
-							Купить за {this._formatPrice(data.price)}
+							Купить за {this._formatPrice(data.price, _currency)}
 						</button>
 					</div>
 				</div>

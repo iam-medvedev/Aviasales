@@ -5,7 +5,8 @@ import Ticket from '../components/Ticket';
 
 class Tickets extends Component {
 	render() {
-		const currency = this.props.currencies.find(item => item.checked);
+		const { currencies } = this.props;
+		const currency = currencies && currencies.length ? currencies.find(item => item.checked) : null;
 
 		return (
 			<div className="tickets">

@@ -16,7 +16,7 @@ class StopsFilter extends Component {
 								<input type="checkbox" checked={item.checked} onChange={() => this.props.stopSelected(item.value)} />
 								<div className="stops__button-checkbox"></div>
 								<span className="stops__button-name">{item.name}</span>
-								{item.value > -1 ? (<button className="stops__button-only" onClick={() => this.props.stopSelectedOnly(item.value)}>Только</button>) : ''}
+								{item.value > -1 ? (<button className="stops__button-only" onClick={(e) => { e.preventDefault(); this.props.stopSelectedOnly(item.value) }}>Только</button>) : ''}
 							</label>
 						);
 					})}

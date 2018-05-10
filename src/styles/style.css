@@ -141,6 +141,7 @@ body {
     cursor: pointer;
     font-weight: 600;
     opacity: 0;
+    z-index: 5;
     transition: .1s linear; }
 
 .tickets {
